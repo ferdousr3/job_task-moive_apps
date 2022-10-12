@@ -19,8 +19,8 @@ const MovieCard = ({ movie }) => {
             {movie?.show?.name}
           </h6>
           <div className="flex text-pgColor text-sm -mt-2">
-            <p>{movie?.show?.ended?.slice(0, 4)}</p>
-            {movie?.show?.ended ? "," : null}
+            <p>{movie?.show?.premiered?.slice(0, 4)}</p>
+            {movie?.show?.premiered ? "," : null}
             <p className="pl-1">{movie?.show?.language}</p>
           </div>
           <button

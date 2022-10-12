@@ -52,10 +52,18 @@ const Movie = () => {
               {movies?.name}
             </h4>
             <div className="flex text-pgColor text-sm pb-4">
-              <p>{movies?.ended?.slice(0, 4)}</p>
-              {movies?.show?.ended ? "," : null}
+              <p>{movies?.premiered}</p>
+              {movies?.premiered ? "," : null}
               <p className="pl-1">{movies?.language}</p>
             </div>
+            <div className="flex pb-2 -mt-2">
+              {movies?.genres?.map((item) => (
+                <p key={item} className="pl-1">
+                  <span>{item}</span>
+                </p>
+              ))}
+            </div>
+
             <span className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {movies?.summary}
             </span>

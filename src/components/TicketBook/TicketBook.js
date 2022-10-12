@@ -8,9 +8,16 @@ const TicketBook = ({ open, onClose, movies }) => {
         <div class="w-full max-w-2xl h-full md:h-auto">
           <div class="rounded-lg  dark:bg-gray-700">
             <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                {movies?.name}
-              </h3>
+              <div className="div">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                  {movies?.name}
+                </h3>
+                <div className="flex text-pgColor text-sm pb-4">
+                  <p>{movies?.premiered}</p>
+                  {movies?.premiered ? "," : null}
+                  <p className="pl-1">{movies?.language}</p>
+                </div>
+              </div>
               <button
                 onClick={onClose}
                 type="button"
@@ -34,7 +41,7 @@ const TicketBook = ({ open, onClose, movies }) => {
               </button>
             </div>
             {/* input from  */}
-            <form className="w-full min-w-[300px] px-6 pt-4" >
+            <form className="w-full min-w-[300px] px-6 pt-4">
               <div class="mb-2">
                 <input
                   type="email"
@@ -46,8 +53,18 @@ const TicketBook = ({ open, onClose, movies }) => {
               </div>
               <div class="mb-2">
                 <input
-                  type="password"
-                  id="password"
+                  type="text"
+                  id="text"
+                  placeholder="Jhon Smith"
+                  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  required=""
+                />
+              </div>
+              <div class="mb-2">
+                <input
+                  type="number"
+                  id="number"
+                  placeholder="+9 15474 5445"
                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                   required=""
                 />
