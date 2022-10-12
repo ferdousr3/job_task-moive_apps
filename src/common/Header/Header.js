@@ -10,7 +10,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="bg-white border-gray-200  py-2.5 rounded dark:bg-gray-900">
+      <nav className="bg-white border-gray-200 shadow-md  py-2.5 rounded dark:bg-gray-900">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <Link to="/" className="flex items-center">
             <img

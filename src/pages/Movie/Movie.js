@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
-import PageTitle from "../../common/PageTitle/PageTitle";
 import TicketBook from "../../components/TicketBook/TicketBook";
-
 import { singleUrl } from "../../config/Config";
 
 const Movie = () => {
   const { id } = useParams();
+
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const [movies, setMovies] = useState({});
+
   const url = `${singleUrl}${id}`;
+
   useEffect(() => {
     setTimeout(() => {
       fetch(url)
@@ -29,11 +31,13 @@ const Movie = () => {
   return (
     <>
       {/* PageTitle */}
-      <PageTitle title="Movies" />
+      <Helmet>
+        <title>{movies?.name ? movies?.name : "movie"}- Movie</title>
+      </Helmet>
       {/* movies */}
 
       <div className="container mx-auto pt-24 pb-24  ">
-        <div className="grid grid-cols-1 p-4 md:grid-cols-2 items-center bg-white rounded-lg  md:flex-row max-w-4xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 z-0">
+        <div className="grid grid-cols-1 p-4 md:grid-cols-2 items-center bg-white rounded-lg  md:flex-row max-w-4xl mx-auto  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 z-0">
           <div className="max-w-xs">
             <button
               className="pb-4 text-blue-700"
@@ -69,13 +73,13 @@ const Movie = () => {
             </span>
             <button
               onClick={() => setOpenModal(true)}
-              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Book Ticket
             </button>
           </div>
         </div>
-
+        {/* Ticket modal */}
         <TicketBook
           movies={movies}
           open={openModal}
